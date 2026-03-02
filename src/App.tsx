@@ -9,7 +9,7 @@ import {
 } from './logic';
 
 function App() {
-  const [secretWord] = useState('APPLE');
+  const [secretWord] = useState('DAVID');
 
   const [guesses, setGuesses] = useState<string[]>(Array(6).fill('     '));
   const [currentRow, setCurrentRow] = useState(0);
