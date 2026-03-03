@@ -63,6 +63,22 @@ A simple Wordle clone built with React, TypeScript, and Vite.
 - `src/logic.ts`: Contains the game logic for evaluating guesses and updating key states.
 - `src/main.tsx`: Entry point for the React application.
 
+### Styling Architecture
+
+The project uses a hybrid approach to styling, combining **CSS Modules** for structure and **Inline Styles** for dynamic game state.
+
+1.  **CSS Modules (`.module.css`)**:
+    - Used for structural layout, spacing, and base component styling (e.g., button shapes, grid layout).
+    - Ensures styles are scoped to their specific components (`App`, `Guesses`, `Keyboard`) to avoid global namespace collisions.
+    - Example: `src/Keyboard.module.css` handles the flex layout of keys, while `src/Guesses.module.css` handles the grid of letter tiles.
+
+2.  **Inline Styles**:
+    - Used for dynamic properties that change based on game logic, specifically the background colors of keys and tiles.
+    - Since the state (correct, present, absent) is calculated at runtime in TypeScript, passing these values directly via the `style` prop is efficient and explicit.
+
+3.  **Global Styles (`index.css`)**:
+    - Handles high-level resets, font definitions, and the dark theme background color (`#121213`) to match the classic Wordle aesthetic.
+
 ## Future Improvements
 
 - Randomize the secret word (currently hardcoded).
