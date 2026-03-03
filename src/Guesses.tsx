@@ -1,5 +1,6 @@
 // src/Guesses.tsx
 import type { LetterStatus } from './logic';
+import styles from './Guesses.module.css';
 
 interface GuessesProps {
   guesses: string[];
@@ -17,12 +18,11 @@ export function Guesses({ guesses, getCellState }: GuessesProps) {
   );
 
   return (
-    <div className='guesses-board'>
+    <div className={styles.guesses}>
       {displayGuesses.map((guessWord, rowIndex) => (
         <div
           key={rowIndex}
-          className='guess-row'
-          style={{ display: 'flex', gap: '4px', marginBottom: '4px' }}
+          className={styles.row}
         >
           {guessWord.split('').map((letter, letterIndex) => {
             // Pass rowIndex down!
@@ -37,23 +37,19 @@ export function Guesses({ guesses, getCellState }: GuessesProps) {
                     ? '#3a3a3c'
                     : 'transparent';
 
-            const textColor = status === 'unused' ? 'white' : 'white';
-
+            const borderColor =
+              status === 'unused' && letter.trim()
+                ? '#565758'
+                : status === 'unused'
+                  ? '#3a3a3c'
+                  : 'transparent';
             return (
               <span
                 key={letterIndex}
+                className={styles.letter}
                 style={{
                   backgroundColor,
-                  color: textColor,
-                  width: '50px',
-                  height: '50px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '2px solid #3a3a3c',
-                  fontSize: '24px',
-                  fontWeight: 'bold',
-                  textTransform: 'uppercase',
+                  borderColor: borderColor,
                 }}
               >
                 {letter}

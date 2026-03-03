@@ -7,6 +7,7 @@ import {
   evaluateGuess,
   type LetterStatus,
 } from './logic';
+import styles from './App.module.css';
 
 function App() {
   const [secretWord] = useState('DAVID');
@@ -67,21 +68,12 @@ function App() {
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        marginTop: '50px',
-        fontFamily: 'sans-serif',
-      }}
-    >
-      <h1>Wordle Clone</h1>
+    <div className={styles.app}>
+      <h1 className={styles.header}>Wordle Clone</h1>
       <Guesses
         guesses={guesses}
         getCellState={getCellState}
       />
-      <br />
       <Keyboard getKeyState={getKeyState} />
     </div>
   );

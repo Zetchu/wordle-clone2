@@ -1,5 +1,6 @@
 // src/Keyboard.tsx
 import type { LetterStatus } from './logic';
+import styles from './Keyboard.module.css';
 
 interface KeyboardProps {
   getKeyState: (letter: string) => LetterStatus;
@@ -13,42 +14,39 @@ const KEYBOARD_ROWS = [
 
 export function Keyboard({ getKeyState }: KeyboardProps) {
   return (
-    <div className='keyboard'>
+    <div className={styles.keyboard}>
       {KEYBOARD_ROWS.map((row, rowIndex) => (
         <div
           key={rowIndex}
-          style={{
-            display: 'flex',
-            gap: '4px',
-            justifyContent: 'center',
-            marginBottom: '4px',
-          }}
+          className={styles.row}
         >
           {row.map((letter) => {
             const status = getKeyState(letter);
 
             const backgroundColor =
               status === 'green'
-                ? 'green'
+                ? '#538d4e'
                 : status === 'yellow'
-                  ? 'goldenrod'
+                  ? '#b59f3b'
                   : status === 'dark'
-                    ? 'gray'
-                    : 'lightgray';
+                    ? '#3a3a3c'
+                    : '#818384';
 
             return (
-              <span
+              <button
                 key={letter}
+                className={styles.key}
                 style={{
                   backgroundColor,
-                  padding: '10px',
-                  cursor: 'pointer',
-                  border: '1px solid black',
-                  borderRadius: '4px',
                 }}
+                onClick={() =>
+                  window.dispatchEvent(
+                    new KeyboardEvent('keydown', { key: letter }),
+                  )
+                }
               >
                 {letter}
-              </span>
+              </button>
             );
           })}
         </div>

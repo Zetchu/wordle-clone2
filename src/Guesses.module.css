@@ -1,0 +1,27 @@
+.guesses {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 30px;
+}
+
+.row {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.letter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 62px;
+  height: 62px;
+  border: 2px solid #3a3a3c;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  user-select: none;
+  transition: all 0.1s ease;
+  color: white;
+}
