@@ -36,7 +36,6 @@ export const GameDetail = () => {
         Game #{game.id} - {game.date}
       </h1>
       <p>Word: *{game.word[0]}***</p>{' '}
-      {/* Hide the secret word slightly or show it */}
       <ul className={styles.scoreList}>
         {scores.map((score, index) => (
           <li

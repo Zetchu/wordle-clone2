@@ -24,14 +24,13 @@ const games: Game[] = [
 const generateScores = () => {
   const scores: Score[] = [];
   games.forEach((game) => {
-    // Generate 15 scores per game to test "top 10" vs "top 3"
     for (let i = 0; i < 15; i++) {
       scores.push({
         id: `${game.id}-${i}`,
         gameId: game.id,
         userId: `User${Math.floor(Math.random() * 1000)}`,
         guesses: Math.floor(Math.random() * 6) + 1,
-        duration: Math.floor(Math.random() * 300) + 30, // 30s to 330s
+        duration: Math.floor(Math.random() * 300) + 30,
         timestamp: new Date().toISOString(),
       });
     }

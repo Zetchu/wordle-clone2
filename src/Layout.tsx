@@ -26,7 +26,6 @@ export const Layout = () => {
           Leaderboard
         </Link>
       </nav>
-      {/* <h1 className={styles.header}>Wordle Clone</h1>  -- Optional, leaving specific headers in pages or here */}
       <Outlet />
     </div>
   );

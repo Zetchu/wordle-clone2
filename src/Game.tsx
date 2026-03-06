@@ -16,14 +16,10 @@ export function Game() {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (currentRow >= 6) return; // Game over or no more guesses
-
+      if (currentRow >= 6) return;
       const key = e.key.toUpperCase();
       const currentWord = guesses[currentRow].trim();
 
-      // Stop interaction if user is typing into other inputs (like search bar in Layout, if we had one)
-      // But typically, we should attach this listener to the window cautiously.
-      // For now, I'll keep it as is.
       if (
         e.target instanceof HTMLInputElement ||
         e.target instanceof HTMLTextAreaElement
