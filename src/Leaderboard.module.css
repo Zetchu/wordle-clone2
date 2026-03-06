@@ -1,0 +1,71 @@
+.leaderboardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+  color: white; /* Assuming dark theme background */
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #3a3a3c;
+  padding-bottom: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.gameList {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+}
+
+.gameItem {
+  background-color: #121213; /* Dark background */
+  border: 1px solid #3a3a3c;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.gameHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.gameLink {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.gameLink:hover {
+  text-decoration: underline;
+}
+
+.topScores {
+  background-color: #212121;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.scoreItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid #424242;
+}
+
+.scoreItem:last-child {
+  border-bottom: none;
+}
