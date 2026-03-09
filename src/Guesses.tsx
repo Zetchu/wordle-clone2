@@ -18,7 +18,10 @@ export function Guesses({ guesses, getCellState }: GuessesProps) {
   );
 
   return (
-    <div className={styles.guesses}>
+    <div
+      className={styles.guesses}
+      data-testid='guesses-container'
+    >
       {displayGuesses.map((guessWord, rowIndex) => (
         <div
           key={rowIndex}
