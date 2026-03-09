@@ -1,19 +1,15 @@
-import { useEffect, useState } from 'react';
-import { getGames, getTopScores, type Game, type Score } from './data/mockData';
+import { useMemo } from 'react';
+import { getGames, getTopScores } from './data/mockData';
 import styles from './Leaderboard.module.css';
 import { Link } from 'react-router-dom';
 
 export const Leaderboard = () => {
-  const [games, setGames] = useState<{ game: Game; topScores: Score[] }[]>([]);
-
-  useEffect(() => {
-    // Simulate synchronous mock or potential async
+  const games = useMemo(() => {
     const gamesData = getGames();
-    const gamesWithScores = gamesData.map((game) => ({
+    return gamesData.map((game) => ({
       game,
       topScores: getTopScores(game.id, 3),
     }));
-    setGames(gamesWithScores);
   }, []);
 
   return (

@@ -1,22 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getGame, getTopScores, type Game, type Score } from './data/mockData';
+import { getGame, getTopScores } from './data/mockData';
 import styles from './GameDetail.module.css';
 
 export const GameDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const [game, setGame] = useState<Game | null>(null);
-  const [scores, setScores] = useState<Score[]>([]);
 
-  useEffect(() => {
-    if (id) {
-      const gameData = getGame(id);
-      if (gameData) {
-        setGame(gameData);
-        setScores(getTopScores(id, 10)); // Top 3 scorers is for list, 10 for detail
-      }
-    }
-  }, [id]);
+  const game = useMemo(() => (id ? getGame(id) : null), [id]);
+  const scores = useMemo(() => (id ? getTopScores(id, 10) : []), [id]);
 
   if (!game) {
     return (
