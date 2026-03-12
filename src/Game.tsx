@@ -1,25 +1,32 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Guesses } from './Guesses';
 import { Keyboard } from './Keyboard';
 import { useRandomWord } from './api/words';
-import {
-  calculateKeyboardState,
-  evaluateGuess,
-  type LetterStatus,
-} from './logic';
 import styles from './App.module.css';
+import { WordleProvider } from './context/WordleContext';
+import { useWordle } from './context/useWordle';
 
 export function Game() {
   const [secretWord, { refresh }] = useRandomWord();
 
-  const [guesses, setGuesses] = useState<string[]>(Array(6).fill('     '));
-  const [currentRow, setCurrentRow] = useState(0);
+  if (!secretWord) return null;
 
-  const isWon = guesses.some((guess) => guess.trim() === secretWord);
-  const isLost = currentRow === 6 && !isWon;
+  return (
+    <WordleProvider
+      word={secretWord}
+      refresh={refresh}
+    >
+      <GameView />
+    </WordleProvider>
+  );
+}
+
+function GameView() {
+  const { state, updateCurrentGuess, submitGuess, refresh, isWon, isLost } =
+    useWordle();
+  const { guesses, currentRow } = state;
 
   useEffect(() => {
-    if (!secretWord) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (currentRow >= 6 || isWon) return;
       const key = e.key.toUpperCase();
@@ -33,56 +40,24 @@ export function Game() {
       }
 
       if (key === 'ENTER') {
-        if (currentWord.length === 5) {
-          setCurrentRow((prev) => prev + 1);
-        }
+        submitGuess(currentWord);
       } else if (key === 'BACKSPACE') {
-        setGuesses((prev) => {
-          const newGuesses = [...prev];
-          newGuesses[currentRow] = currentWord.slice(0, -1).padEnd(5, ' ');
-          return newGuesses;
-        });
+        if (currentWord.length > 0) {
+          updateCurrentGuess(currentWord.slice(0, -1));
+        }
       } else if (/^[A-Z]$/.test(key)) {
         if (currentWord.length < 5) {
-          setGuesses((prev) => {
-            const newGuesses = [...prev];
-            newGuesses[currentRow] = (currentWord + key).padEnd(5, ' ');
-            return newGuesses;
-          });
+          updateCurrentGuess(currentWord + key);
         }
       }
     };
+
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentRow, guesses, secretWord, isWon]);
-
-  if (!secretWord) return null;
-
-  // --- COLORING LOGIC ---
-
-  const committedGuesses = guesses.slice(0, currentRow);
-  const keyboardStateMap = calculateKeyboardState(committedGuesses, secretWord);
-
-  const getKeyState = (letter: string): LetterStatus => {
-    return keyboardStateMap[letter.toUpperCase()] || 'unused';
-  };
-
-  const getCellState = (
-    guessWord: string,
-    position: number,
-    rowIndex: number,
-  ): LetterStatus => {
-    if (rowIndex >= currentRow && !isWon) {
-      return 'unused';
-    }
-    const evaluated = evaluateGuess(guessWord, secretWord);
-    return evaluated[position];
-  };
+  }, [currentRow, guesses, isWon, submitGuess, updateCurrentGuess]);
 
   const handleRefresh = () => {
     refresh();
-    setGuesses(Array(6).fill('     '));
-    setCurrentRow(0);
   };
 
   return (
@@ -102,15 +77,12 @@ export function Game() {
       >
         Wordle Clone
       </h1>
-      <Guesses
-        guesses={guesses}
-        getCellState={getCellState}
-      />
-      <Keyboard getKeyState={getKeyState} />
+      <Guesses />
+      <Keyboard />
       {(isWon || isLost) && (
         <div style={{ marginTop: '20px', textAlign: 'center' }}>
           <h2>
-            {isWon ? 'You Won!' : `Game Over! The word was ${secretWord}`}
+            {isWon ? 'You Won!' : `Game Over! The word was ${state.secretWord}`}
           </h2>
           <button
             onClick={handleRefresh}

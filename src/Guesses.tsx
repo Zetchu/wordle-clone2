@@ -1,17 +1,11 @@
 // src/Guesses.tsx
-import type { LetterStatus } from './logic';
+import { useWordle } from './context/useWordle';
 import styles from './Guesses.module.css';
 
-interface GuessesProps {
-  guesses: string[];
-  getCellState: (
-    guessWord: string,
-    position: number,
-    rowIndex: number,
-  ) => LetterStatus;
-}
+export function Guesses() {
+  const { state, getCellState } = useWordle();
+  const { guesses } = state;
 
-export function Guesses({ guesses, getCellState }: GuessesProps) {
   const displayGuesses = Array.from(
     { length: 6 },
     (_, i) => guesses[i] || ' '.repeat(5),

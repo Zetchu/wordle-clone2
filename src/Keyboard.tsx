@@ -1,10 +1,6 @@
 // src/Keyboard.tsx
-import type { LetterStatus } from './logic';
+import { useWordle } from './context/useWordle';
 import styles from './Keyboard.module.css';
-
-interface KeyboardProps {
-  getKeyState: (letter: string) => LetterStatus;
-}
 
 const KEYBOARD_ROWS = [
   ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
@@ -12,7 +8,8 @@ const KEYBOARD_ROWS = [
   ['Z', 'X', 'C', 'V', 'B', 'N', 'M'],
 ];
 
-export function Keyboard({ getKeyState }: KeyboardProps) {
+export function Keyboard() {
+  const { getKeyState } = useWordle();
   return (
     <div className={styles.keyboard}>
       {KEYBOARD_ROWS.map((row, rowIndex) => (

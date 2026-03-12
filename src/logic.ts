@@ -1,3 +1,15 @@
+export interface State {
+  secretWord: string;
+  guesses: string[];
+  currentRow: number;
+}
+
+export const createInitialState = (word: string): State => ({
+  secretWord: word.toUpperCase(),
+  guesses: Array(6).fill('     '),
+  currentRow: 0,
+});
+
 export type LetterStatus = 'green' | 'yellow' | 'dark' | 'unused';
 
 export const evaluateGuess = (
