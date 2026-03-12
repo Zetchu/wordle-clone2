@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { Game } from './Game';
+import { GamePage } from './GamePage';
 import { Leaderboard } from './Leaderboard';
 import { GameDetail } from './GameDetail';
 import { Layout } from './Layout';
@@ -13,7 +13,7 @@ function App() {
       >
         <Route
           index
-          element={<Game />}
+          element={<GamePage />}
         />
         <Route
           path='leaderboard'
