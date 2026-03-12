@@ -52,10 +52,9 @@ export function Game() {
         }
       }
     };
-    isWon;
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentRow, guesses, secretWord]);
+  }, [currentRow, guesses, secretWord, isWon]);
 
   if (!secretWord) return null;
 

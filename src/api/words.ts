@@ -1,7 +1,8 @@
 import { get } from './api';
 import useAsync from '../shared/useAsync/useAsync';
 
-const fetchRandomWord = async (_initial: boolean): Promise<string> => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const fetchRandomWord = async (_: boolean): Promise<string> => {
   const data = await get<string[]>(
     'https://random-word-api.herokuapp.com/word?length=5',
   );

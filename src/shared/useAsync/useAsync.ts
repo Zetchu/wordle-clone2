@@ -10,7 +10,9 @@ export default function useAsync<Type>(
   },
 ] {
   const fnRef = useRef(fn);
-  fnRef.current = fn;
+  useEffect(() => {
+    fnRef.current = fn;
+  });
 
   const [promise, setPromise] = useState<Promise<Type>>();
 
