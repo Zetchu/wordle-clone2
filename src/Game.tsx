@@ -3,8 +3,7 @@ import { Guesses } from './Guesses';
 import { Keyboard } from './Keyboard';
 import { useRandomWord } from './api/words';
 import styles from './App.module.css';
-import { WordleProvider } from './context/WordleContext';
-import { useWordle } from './context/useWordle';
+import { WordleProvider, useWordle } from './context';
 
 export function Game() {
   const [secretWord, { refresh }] = useRandomWord();

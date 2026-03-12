@@ -1,5 +1,5 @@
 // src/Guesses.tsx
-import { useWordle } from './context/useWordle';
+import { useWordle } from './context';
 import styles from './Guesses.module.css';
 
 export function Guesses() {

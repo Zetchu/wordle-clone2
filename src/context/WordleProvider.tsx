@@ -14,7 +14,6 @@ import {
 } from '../logic';
 import { type WordleContextType, WordleContext } from './context';
 
-// Export the provider
 export function WordleProvider({
   children,
   word,
@@ -24,16 +23,13 @@ export function WordleProvider({
   word: string;
   refresh: () => void;
 }) {
-  // logic from useWordle
   const [state, setState] = useState<State>(() => createInitialState(word));
 
   useEffect(() => {
-    // Reset state when word changes
     setState(createInitialState(word));
   }, [word]);
 
   const isWon = useMemo(() => {
-    // Check if any guess matches the word
     return state.guesses.some((g) => g === state.secretWord);
   }, [state.guesses, state.secretWord]);
 
