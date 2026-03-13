@@ -1,5 +1,5 @@
 import { Outlet, Link } from 'react-router-dom';
-import styles from '../../App.module.css';
+import styles from '../../../App.module.css';
 
 export const Layout = () => {
   return (
@@ -14,13 +14,13 @@ export const Layout = () => {
         }}
       >
         <Link
-          to='/'
+          to="/"
           style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold' }}
         >
           Play
         </Link>
         <Link
-          to='/leaderboard'
+          to="/leaderboard"
           style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold' }}
         >
           Leaderboard

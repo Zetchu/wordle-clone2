@@ -13,10 +13,7 @@ export function Keyboard() {
   return (
     <div className={styles.keyboard}>
       {KEYBOARD_ROWS.map((row, rowIndex) => (
-        <div
-          key={rowIndex}
-          className={styles.row}
-        >
+        <div key={rowIndex} className={styles.row}>
           {row.map((letter) => {
             const status = getKeyState(letter);
 

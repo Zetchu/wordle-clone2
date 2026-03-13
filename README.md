@@ -15,17 +15,14 @@ A reusable, tested, and strict React 19 Wordle clone built with clean architectu
 
 ```
 src/
-├── api/          # API integration logic
-├── components/   # Reusable UI components
-│   ├── Game/     # Main game container
-│   ├── Guesses/  # Grid display
-│   ├── Keyboard/ # Interactive keyboard
-│   └── Layout/   # Page layout wrapper
-├── context/      # React Context definitions and providers
-├── data/         # Mock data and static resources
-├── logic.ts      # Core game logic (pure functions)
-├── pages/        # Route components (GamePage, Leaderboard, etc.)
-├── shared/       # Shared hooks and utilities (useAsync)
+├── features/     # Feature-based modules
+│   ├── game/     # Game feature (components, logic, context, api)
+│   └── leaderboard/ # Leaderboard feature
+├── pages/        # Route components (thin wrappers)
+├── shared/       # Shared hooks, ui, api
+│   ├── api/      # Shared API integration logic
+│   ├── ui/       # Shared UI components (Layout)
+│   └── useAsync/ # Shared hooks
 └── App.tsx       # Main application routing
 ```
 

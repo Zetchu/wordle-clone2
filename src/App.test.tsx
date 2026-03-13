@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 
 // Mock the hook so App doesn't try to actually fetch
-vi.mock('./api/words', () => ({
+vi.mock('./features/game/api/words', () => ({
   useRandomWord: () => ['TESTS', { refresh: vi.fn() }],
 }));
 

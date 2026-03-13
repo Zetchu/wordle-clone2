@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { getGames, getTopScores } from '../data/mockData';
+import { getGames, getTopScores } from '../api/mockData';
 import styles from './Leaderboard.module.css';
 import { Link } from 'react-router-dom';
 
@@ -17,25 +17,16 @@ export const Leaderboard = () => {
       <h1 className={styles.title}>Leaderboard</h1>
       <ul className={styles.gameList}>
         {games.map(({ game, topScores }) => (
-          <li
-            key={game.id}
-            className={styles.gameItem}
-          >
+          <li key={game.id} className={styles.gameItem}>
             <div className={styles.gameHeader}>
-              <Link
-                to={`/leaderboard/${game.id}`}
-                className={styles.gameLink}
-              >
+              <Link to={`/leaderboard/${game.id}`} className={styles.gameLink}>
                 Game #{game.id} - {game.date}
               </Link>
             </div>
             <div className={styles.topScores}>
               <h4>Top 3 Scorers</h4>
               {topScores.map((score, index) => (
-                <div
-                  key={score.id}
-                  className={styles.scoreItem}
-                >
+                <div key={score.id} className={styles.scoreItem}>
                   <span>
                     {index + 1}. {score.userId}
                   </span>

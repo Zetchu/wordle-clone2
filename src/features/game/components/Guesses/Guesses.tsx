@@ -12,15 +12,9 @@ export function Guesses() {
   );
 
   return (
-    <div
-      className={styles.guesses}
-      data-testid='guesses-container'
-    >
+    <div className={styles.guesses} data-testid="guesses-container">
       {displayGuesses.map((guessWord, rowIndex) => (
-        <div
-          key={rowIndex}
-          className={styles.row}
-        >
+        <div key={rowIndex} className={styles.row}>
           {guessWord.split('').map((letter, letterIndex) => {
             // Pass rowIndex down!
             const status = getCellState(guessWord, letterIndex, rowIndex);

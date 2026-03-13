@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Guesses } from '../Guesses/Guesses';
 import { Keyboard } from '../Keyboard/Keyboard';
 import { useRandomWord } from '../../api/words';
-import styles from '../../App.module.css';
+import styles from '../../../../App.module.css';
 import { WordleProvider, useWordle } from '../../context';
 
 export function Game() {
@@ -11,10 +11,7 @@ export function Game() {
   if (!secretWord) return null;
 
   return (
-    <WordleProvider
-      word={secretWord}
-      refresh={refresh}
-    >
+    <WordleProvider word={secretWord} refresh={refresh}>
       <GameView />
     </WordleProvider>
   );
@@ -72,7 +69,7 @@ function GameView() {
         className={styles.header}
         onClick={handleRefresh}
         style={{ cursor: 'pointer' }}
-        title='Click to restart'
+        title="Click to restart"
       >
         Wordle Clone
       </h1>

@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Game } from '../components/Game/Game';
+import { Game } from '../features/game';
 
 export function GamePage() {
   return (

@@ -11,7 +11,7 @@ import {
   calculateKeyboardState,
   evaluateGuess,
   type LetterStatus,
-} from '../logic';
+} from '../logic/logic';
 import { type WordleContextType, WordleContext } from './context';
 
 export function WordleProvider({

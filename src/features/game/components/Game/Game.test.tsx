@@ -3,7 +3,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { Game } from './Game';
 
 // Mock the hook to return a predictable word immediately
-vi.mock('./api/words', () => ({
+vi.mock('../../api/words', () => ({
   useRandomWord: () => ['TESTS', { refresh: vi.fn() }],
 }));
 

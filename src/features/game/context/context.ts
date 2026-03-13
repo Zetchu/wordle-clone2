@@ -1,6 +1,6 @@
 // src/context/context.ts
 import { createContext } from 'react';
-import type { State, LetterStatus } from '../logic';
+import type { State, LetterStatus } from '../logic/logic';
 
 export interface WordleContextType {
   state: State;

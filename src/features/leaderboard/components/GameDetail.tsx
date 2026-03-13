@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getGame, getTopScores } from '../data/mockData';
+import { getGame, getTopScores } from '../api/mockData';
 import styles from './GameDetail.module.css';
 
 export const GameDetail = () => {
@@ -17,10 +17,7 @@ export const GameDetail = () => {
 
   return (
     <div className={styles.detailContainer}>
-      <Link
-        to='/leaderboard'
-        className={styles.backLink}
-      >
+      <Link to="/leaderboard" className={styles.backLink}>
         Back to Leaderboard
       </Link>
       <h1 className={styles.title}>
@@ -29,10 +26,7 @@ export const GameDetail = () => {
       <p>Word: *{game.word[0]}***</p>{' '}
       <ul className={styles.scoreList}>
         {scores.map((score, index) => (
-          <li
-            key={score.id}
-            className={styles.scoreItem}
-          >
+          <li key={score.id} className={styles.scoreItem}>
             <span className={styles.rank}>#{index + 1}</span>
             <span className={styles.user}>{score.userId}</span>
             <span className={styles.stats}>

@@ -1,5 +1,5 @@
-import { get } from './api';
-import useAsync from '../shared/useAsync/useAsync';
+import { get } from '../../../shared/api/api';
+import useAsync from '../../../shared/useAsync/useAsync';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const fetchRandomWord = async (_: boolean): Promise<string> => {
