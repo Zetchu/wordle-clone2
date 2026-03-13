@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { getGames, getTopScores } from './data/mockData';
+import { getGames, getTopScores } from '../data/mockData';
 import styles from './Leaderboard.module.css';
 import { Link } from 'react-router-dom';
 

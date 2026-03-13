@@ -1,5 +1,5 @@
 // src/Keyboard.tsx
-import { useWordle } from './context';
+import { useWordle } from '../../context';
 import styles from './Keyboard.module.css';
 
 const KEYBOARD_ROWS = [

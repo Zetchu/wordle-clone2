@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
-import { GamePage } from './GamePage';
-import { Leaderboard } from './Leaderboard';
-import { GameDetail } from './GameDetail';
-import { Layout } from './Layout';
+import { GamePage } from './pages/GamePage';
+import { Leaderboard } from './pages/Leaderboard';
+import { GameDetail } from './pages/GameDetail';
+import { Layout } from './components/Layout/Layout';
 
 function App() {
   return (

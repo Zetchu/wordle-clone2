@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { Guesses } from './Guesses';
-import { Keyboard } from './Keyboard';
-import { useRandomWord } from './api/words';
-import styles from './App.module.css';
-import { WordleProvider, useWordle } from './context';
+import { Guesses } from '../Guesses/Guesses';
+import { Keyboard } from '../Keyboard/Keyboard';
+import { useRandomWord } from '../../api/words';
+import styles from '../../App.module.css';
+import { WordleProvider, useWordle } from '../../context';
 
 export function Game() {
   const [secretWord, { refresh }] = useRandomWord();

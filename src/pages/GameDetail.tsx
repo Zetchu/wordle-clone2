@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getGame, getTopScores } from './data/mockData';
+import { getGame, getTopScores } from '../data/mockData';
 import styles from './GameDetail.module.css';
 
 export const GameDetail = () => {
